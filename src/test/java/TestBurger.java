@@ -11,46 +11,42 @@ import praktikum.IngredientType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestBurger {
-
     @Mock
     Bun bun;
     @Mock
-    Ingredient ingredient,ingredient1;
-
+    Ingredient ingredient, ingredient1;
 
     Burger burger = new Burger();
 
-
     @Test
-    public void testSetBun(){
+    public void testSetBun() {
         burger.setBuns(bun);
-        Assert.assertEquals(bun,burger.bun);
+        Assert.assertEquals(bun, burger.bun);
     }
 
-
     @Test
-    public void testAddIngredient(){
+    public void testAddIngredient() {
         burger.addIngredient(ingredient);
         Assert.assertEquals(1, burger.ingredients.size());
     }
 
     @Test
-    public void testRemoveIngredient(){
+    public void testRemoveIngredient() {
         burger.addIngredient(ingredient);
         burger.removeIngredient(0);
-        Assert.assertEquals(0,burger.ingredients.size());
+        Assert.assertEquals(0, burger.ingredients.size());
     }
 
     @Test
-    public void testMoveIngredient(){
+    public void testMoveIngredient() {
         burger.addIngredient(ingredient);
         burger.addIngredient(ingredient);
-        burger.moveIngredient(0,1);
-        Assert.assertEquals(1,burger.ingredients.lastIndexOf(ingredient));
+        burger.moveIngredient(0, 1);
+        Assert.assertEquals(1, burger.ingredients.lastIndexOf(ingredient));
     }
 
     @Test
-    public void testGetReceipt(){
+    public void testGetReceipt() {
         Mockito.when(bun.getName()).thenReturn("white bun");
         Mockito.when(bun.getPrice()).thenReturn(50F);
         burger.setBuns(bun);
@@ -68,8 +64,7 @@ public class TestBurger {
         receiptExpected.append(String.format("(==== white bun ====)%n"));
         receiptExpected.append(String.format("%n"));
         receiptExpected.append(String.format("Price: 310,000000%n"));
-        Assert.assertEquals(receiptExpected.toString(),burger.getReceipt());
-        Assert.assertEquals(110,burger.getReceipt().length());
+        Assert.assertEquals(receiptExpected.toString(), burger.getReceipt());
+        Assert.assertEquals(110, burger.getReceipt().length());
     }
-
 }
