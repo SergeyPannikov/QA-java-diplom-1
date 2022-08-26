@@ -1,8 +1,10 @@
 package praktikum;
 
+
 import java.util.List;
 
 public class Praktikum {
+
 
     public static void main(String[] args) {
         // Инициализируем базу данных
@@ -19,6 +21,7 @@ public class Praktikum {
 
         // Соберём бургер
         burger.setBuns(buns.get(0));
+        System.out.println(buns.get(0).getPrice());
 
         burger.addIngredient(ingredients.get(1));
         burger.addIngredient(ingredients.get(4));
